@@ -1,0 +1,33 @@
+services:
+  notes:
+    image: ghcr.io/logykk/zenith-pr840-notes-20261016-044625:zenith-pending
+    environment:
+      NOTES_DB: /data/notes.sqlite3
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+    volumes:
+      - notes-data:/data
+    restart: unless-stopped
+
+volumes:
+  notes-data:
+
+x-zenith:
+  catalog:
+    name: Disposable Notes
+    description: A browser-based, SQLite-backed notes app for controlled disposable staging; anyone with network access can read and add notes, so use synthetic, non-sensitive data only.
+    authors: [logykk]
+    tags: [productivity, notes]
+    source: https://github.com/logykk/zenith-pr840-notes-20261016-044625
+    license: MIT
+  expose:
+    - service: notes
+      port: 8080
+      web: true
+  storage:
+    notes-data:
+      volume: notes-data
+      label: Notes database
+      description: Persistent SQLite database at /data/notes.sqlite3.
+      public: false
