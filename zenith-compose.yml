@@ -1,6 +1,9 @@
 services:
   notes:
-    image: ghcr.io/logykk/zenith-pr840-notes-20261016-044625:zenith-pending
+    image: "ghcr.io/logykk/zenith-pr840-notes-20261016-044625@sha256:9d008d15ea0abd3826e45316905e7f416da29789ebe9771c4fca21ab61de507e"
+    x-zenith-image:
+      source: "ghcr.io/logykk/zenith-pr840-notes-20261016-044625@sha256:9d008d15ea0abd3826e45316905e7f416da29789ebe9771c4fca21ab61de507e"
+      last_pin: "ghcr.io/logykk/zenith-pr840-notes-20261016-044625@sha256:9d008d15ea0abd3826e45316905e7f416da29789ebe9771c4fca21ab61de507e"
     environment:
       NOTES_DB: /data/notes.sqlite3
       PORT: "8080"
